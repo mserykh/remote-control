@@ -1,15 +1,14 @@
 {
     "name": "ws_task",
     "version": "1.0.0",
-    "description": "Template for the WebSocket remote control task",
+    "description": "WebSocket remote control",
     "main": "index.js",
     "type": "module",
     "scripts": {
         "start": "node ./index.js",
-        "start:dev": "nodemon ./index.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start:dev": "nodemon ./index.js"
     },
-    "author": "Andrei Auchynnikau",
+    "author": "Maria Serykh",
     "keywords": [],
     "license": "ISC",
     "devDependencies": {
