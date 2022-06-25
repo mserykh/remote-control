@@ -1,7 +1,9 @@
 import Jimp from 'jimp';
 import { httpServer } from './src/http_server/index';
 import robot from 'robotjs';
-import WebSocket, { WebSocketServer } from 'ws';
+import WebSocket, { createWebSocketStream, WebSocketServer } from 'ws';
+
+import { runCommand } from './src/modules/runCommand';
 
 const HTTP_PORT = 3000;
 
@@ -13,13 +15,12 @@ const WS_PORT = 8080;
 const webSocketServer = new WebSocketServer({ port: WS_PORT });
 
 console.log(`Start ws server on the ${WS_PORT} port!`);
-webSocketServer.on('connection', function connection(ws) {
-  ws.on('message', function message(data) {
-    console.log('received: %s', data);
-    ws.send('Got ur msg: ' + data);
+webSocketServer.on('connection', (ws) => {
+  ws.on('message', (data) => {
+    const input = data.toString();
+    runCommand(input);
+    console.log('received: %s', input);
   });
-
-  ws.send('something');
 });
 
 webSocketServer.on('close', () => {
