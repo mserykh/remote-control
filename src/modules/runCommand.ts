@@ -3,6 +3,9 @@ import { moveUp } from './moveUp';
 import { moveDown } from './moveDown';
 import { moveLeft } from './moveLeft';
 import { moveRight } from './moveRight';
+import { printPosition } from './printPosition';
+import { drawSquare } from './drawSquare';
+import { drawRect } from './drawRect';
 
 export const runCommand = (input: string) => {
   const [command, ...args] = input.split(' ');
@@ -24,8 +27,20 @@ export const runCommand = (input: string) => {
       moveRight(args);
       break;
     }
+    case Commands.Position: {
+      printPosition();
+      break;
+    }
+    case Commands.Square: {
+      drawSquare(args);
+      break;
+    }
+    case Commands.Rectangle: {
+      drawRect(args);
+      break;
+    }
     default: {
-      console.log('Unnknown command');
+      console.log('Unknown command');
     }
   }
 };
