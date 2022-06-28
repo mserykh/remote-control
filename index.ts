@@ -25,21 +25,24 @@ webSocketServer.on('connection', (ws) => {
       const input = data.toString();
       const output = await runCommand(input);
       console.log('< -', input);
-      
+
       const result = `${input} ${output ? output : ''}\0`;
 
       if (typeof result === 'string') {
         console.log('- >', result);
 
-        duplex.write(result);
+        duplex.write(result, (error) => {
+          if (error instanceof Error)
+          console.log(`Operation failed, error: ${error}`);
+        });
       }
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(`Operation failed, error: ${error}`);
     }
   });
 
-  ws.on('error', (e) => {
-    console.log(e);
+  ws.on('error', (error) => {
+    console.log(`Operation failed, error: ${error}`);
   });
 
   ws.on('close', () => {
