@@ -6,6 +6,7 @@ import { moveRight } from './moveRight';
 import { printPosition } from './printPosition';
 import { drawSquare } from './drawSquare';
 import { drawRect } from './drawRect';
+import { drawCircle } from './drawCircle';
 
 export const runCommand = async (input: string): Promise<void | string> => {
   const [command, ...args] = input.split(' ');
@@ -37,6 +38,10 @@ export const runCommand = async (input: string): Promise<void | string> => {
     }
     case Commands.Rectangle: {
       await drawRect(args);
+      break;
+    }
+    case Commands.Circle: {
+      await drawCircle(args);
       break;
     }
     default: {

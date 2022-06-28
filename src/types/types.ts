@@ -6,6 +6,7 @@ export enum Commands {
   Position = 'mouse_position',
   Square = 'draw_square',
   Rectangle = 'draw_rectangle',
+  Circle = 'draw_circle',
   PrntScrn = 'prnt_scrn',
 }
 
