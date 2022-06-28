@@ -1,8 +1,8 @@
 import robot from 'robotjs';
 
-export const printPosition = (): string => {
+export const printPosition = async (): Promise<string> => {
   const currentPosition = robot.getMousePos();
-  const result = `${currentPosition.x} px,${currentPosition.y} px`;
+  const result = `${currentPosition.x},${currentPosition.y}`;
 
   return result;
 };

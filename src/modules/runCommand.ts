@@ -7,36 +7,36 @@ import { printPosition } from './printPosition';
 import { drawSquare } from './drawSquare';
 import { drawRect } from './drawRect';
 
-export const runCommand = (input: string) => {
+export const runCommand = async (input: string): Promise<void | string> => {
   const [command, ...args] = input.split(' ');
 
   switch (command) {
     case Commands.Up: {
-      moveUp(args);
+      await moveUp(args);
       break;
     }
     case Commands.Down: {
-      moveDown(args);
+      await moveDown(args);
       break;
     }
     case Commands.Left: {
-      moveLeft(args);
+      await moveLeft(args);
       break;
     }
     case Commands.Right: {
-      moveRight(args);
+      await moveRight(args);
       break;
     }
     case Commands.Position: {
-      printPosition();
-      break;
+      const position = await printPosition();
+      return position;
     }
     case Commands.Square: {
-      drawSquare(args);
+      await drawSquare(args);
       break;
     }
     case Commands.Rectangle: {
-      drawRect(args);
+      await drawRect(args);
       break;
     }
     default: {

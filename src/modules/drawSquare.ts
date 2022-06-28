@@ -5,15 +5,15 @@ import { moveLeft } from './moveLeft';
 import { moveRight } from './moveRight';
 import { moveUp } from './moveUp';
 
-export const drawSquare = (args: Array<string>) => {
+export const drawSquare = async (args: Array<string>): Promise<void> => {
   const sideRaw = args[0];
 
   robot.mouseToggle('down');
 
-  moveRight([sideRaw]);
-  moveDown([sideRaw]);
-  moveLeft([sideRaw]);
-  moveUp([sideRaw]);
+  await moveRight([sideRaw]);
+  await moveDown([sideRaw]);
+  await moveLeft([sideRaw]);
+  await moveUp([sideRaw]);
 
   robot.mouseToggle('up');
 };

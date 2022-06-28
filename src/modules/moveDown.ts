@@ -1,8 +1,8 @@
 import { moveMouse } from './moveMouse';
 
-export const moveDown = (args: Array<string>) => {
+export const moveDown = async (args: Array<string>): Promise<void> => {
   const stepRaw = args[0];
   const step = Number(stepRaw);
 
-  moveMouse(0, step);
+  await moveMouse(0, step);
 };
