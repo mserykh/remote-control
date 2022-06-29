@@ -16,8 +16,8 @@ export const printScreen = async (): Promise<string | void> => {
       image.bitmap.data[idx + 3] = img.image.readUInt8(pos++);
     });
 
-    const bmpImage = await image.getBase64Async(Jimp.MIME_PNG);
-    const result = bmpImage.replace('data:image/png;base64,', '');
+    const bmpImage = await image.getBufferAsync(Jimp.MIME_PNG);
+    const result = bmpImage.toString('base64');
 
     return result;
   } catch (error) {
