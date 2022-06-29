@@ -30,7 +30,6 @@ webSocketServer.on('connection', (ws) => {
       if (typeof result === 'string') {
         
         console.log('Operation successful');
-        console.log(`-> ${result}\0`);
 
         duplex.write(result, (error) => {
           if (error instanceof Error) {
