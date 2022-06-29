@@ -1,4 +1,3 @@
-import Jimp from 'jimp';
 import { httpServer } from './src/http_server/index';
 import { createWebSocketStream, WebSocketServer } from 'ws';
 
@@ -26,11 +25,12 @@ webSocketServer.on('connection', (ws) => {
       const output = await runCommand(input);
       console.log('<-', input);
 
-      const result = `${input} ${output ? output : ''}\0`;
-      console.log('result', JSON.stringify(result));
+      const result = `${input} ${output ? output : ''}`;
 
       if (typeof result === 'string') {
-        console.log('->', result);
+        
+        console.log('Operation successful');
+        console.log(`-> ${result}\0`);
 
         duplex.write(result, (error) => {
           if (error instanceof Error) {
