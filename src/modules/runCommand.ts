@@ -7,6 +7,7 @@ import { printPosition } from './printPosition';
 import { drawSquare } from './drawSquare';
 import { drawRect } from './drawRect';
 import { drawCircle } from './drawCircle';
+import { printScreen } from './printScreen';
 
 export const runCommand = async (input: string): Promise<void | string> => {
   const [command, ...args] = input.split(' ');
@@ -43,6 +44,10 @@ export const runCommand = async (input: string): Promise<void | string> => {
     case Commands.Circle: {
       await drawCircle(args);
       break;
+    }
+    case Commands.PrntScrn: {
+      const printscreen = await printScreen();
+      return printscreen;
     }
     default: {
       console.log('Unknown command');

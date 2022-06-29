@@ -1,7 +1,4 @@
 import robot from 'robotjs';
-import { moveMouse } from './moveMouse';
-import { moveRight } from './moveRight';
-import { moveUp } from './moveUp';
 
 export const drawCircle = async (args: Array<string>) => {
   const radiusRaw = args[0];
